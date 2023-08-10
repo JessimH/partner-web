@@ -1,5 +1,9 @@
-import { getUserByUsername } from "../db/users";
+import { getUserByUsername } from "../../db/users";
 import bcrypt from "bcrypt";
+import { generateTokens, sendRefreshToken } from "../../utils/jwt";
+import { userTransformer } from "../../transformers/user";
+import { createRefreshToken } from "../../db/refreshToken";
+import { sendError } from "h3";
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
@@ -43,8 +47,20 @@ export default defineEventHandler(async (event) => {
   }
 
   // Create a JWT token
+  // Create a JWT token :  access token and refresh token
+  const { accessToken, refreshToken } = generateTokens(user);
+
+  // Save the refresh token in the database
+  await createRefreshToken({
+    token: refreshToken,
+    userId: user.id,
+  });
+
+  // add httpOnly cookie
+  sendRefreshToken(event, refreshToken);
 
   return {
-    user: user,
+    access_token: accessToken,
+    user: userTransformer(user),
   };
 });
