@@ -1,5 +1,5 @@
 <template>
-  <div class="border-x" :class="borderColorClasses">
+  <div class="border-l min-h-[100vh]" :class="borderColorClasses">
     <div class="sticky top-0 p-4 bg-white/80 backdrop-blur-md dark:bg-black/80">
       <h2 class="text-xl font-bold text-gray-800 dark:text-gray-100">
         {{ props.title }}

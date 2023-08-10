@@ -19,3 +19,11 @@ export const getUserByUsername = (username: string) => {
     },
   });
 };
+
+export const getUserById = (id: string) => {
+  return prisma.user.findUnique({
+    where: {
+      id,
+    },
+  });
+};
