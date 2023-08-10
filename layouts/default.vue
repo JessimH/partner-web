@@ -1,19 +1,18 @@
 <template>
   <div :class="{ dark: darkMode }">
-    <div class="bg-white dark:bg-dim-900 min-h-full">
-      <div
-        class="grid grid-cols-12 xs:px-2 sm:px-6 lg:max-w-7xl lg:px-8 lg:gap-5"
-      >
+    <div class="bg-white dark:bg-black min-h-full">
+      <div class="grid grid-cols-12 xs:px-2 sm:px-6 lg:px-8 lg:gap-5">
         <!-- LEFT SIDE BAR -->
 
-        <div class="xs:col-span-1 xl:col-span-2">
+        <div class="xs-col-span-1 xl:col-span-2">
           <div class="sticky top-0">
             <NavigationLeft />
           </div>
         </div>
         <!-- Main content -->
-        <slot />
-        <!-- RIGHT SIDE BAR -->
+        <div class="col-span-11 md:col-span-11 xl:col-span-10">
+          <slot />
+        </div>
       </div>
     </div>
   </div>

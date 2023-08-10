@@ -12,42 +12,54 @@
     </div>
 
     <div class="mt-2 flex flex-col gap-1">
-      <NavigationTab active>
+      <NavigationLinks active>
         <template #icon>
           <HomeIcon />
         </template>
         <template #text> Home </template>
-      </NavigationTab>
-      <NavigationTab>
+      </NavigationLinks>
+      <NavigationLinks>
         <template #icon>
           <MagnifyingGlassIcon />
         </template>
         <template #text> Explore </template>
-      </NavigationTab>
-      <NavigationTab>
+      </NavigationLinks>
+      <NavigationLinks>
         <template #icon>
           <ChatBubbleLeftRightIcon />
         </template>
         <template #text> Messages </template>
-      </NavigationTab>
-      <NavigationTab>
+      </NavigationLinks>
+      <NavigationLinks>
         <template #icon>
           <MapPinIcon />
         </template>
         <template #text> Map </template>
-      </NavigationTab>
-      <NavigationTab>
+      </NavigationLinks>
+      <NavigationLinks>
         <template #icon>
           <BellIcon />
         </template>
         <template #text> Notification </template>
-      </NavigationTab>
-      <NavigationTab>
+      </NavigationLinks>
+      <NavigationLinks>
+        <template #icon>
+          <PlusCircleIcon />
+        </template>
+        <template #text> Training </template>
+      </NavigationLinks>
+      <NavigationLinks>
+        <template #icon>
+          <Cog6ToothIcon />
+        </template>
+        <template #text> PROFIL </template>
+      </NavigationLinks>
+      <NavigationLinks>
         <template #icon>
           <Cog6ToothIcon />
         </template>
         <template #text> Settings </template>
-      </NavigationTab>
+      </NavigationLinks>
     </div>
   </div>
 </template>
@@ -60,6 +72,7 @@ import {
   MapPinIcon,
   MagnifyingGlassIcon,
   Cog6ToothIcon,
+  PlusCircleIcon,
 } from "@heroicons/vue/24/outline";
 
 const { defaultTransition } = useTailwindConfig();
