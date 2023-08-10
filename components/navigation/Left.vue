@@ -44,6 +44,18 @@
       </NavigationLinks>
       <NavigationLinks>
         <template #icon>
+          <PlusCircleIcon />
+        </template>
+        <template #text> Training </template>
+      </NavigationLinks>
+      <NavigationLinks>
+        <template #icon>
+          <Cog6ToothIcon />
+        </template>
+        <template #text> PROFIL </template>
+      </NavigationLinks>
+      <NavigationLinks>
+        <template #icon>
           <Cog6ToothIcon />
         </template>
         <template #text> Settings </template>
@@ -60,6 +72,7 @@ import {
   MapPinIcon,
   MagnifyingGlassIcon,
   Cog6ToothIcon,
+  PlusCircleIcon,
 } from "@heroicons/vue/24/outline";
 
 const { defaultTransition } = useTailwindConfig();

@@ -1,9 +1,11 @@
 <template>
   <div>
-    <h1>Home page</h1>
+    <MainSection title="Home" :loading="loading"> Home Page </MainSection>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const loading = ref(false);
+</script>
 
 <style scoped></style>
