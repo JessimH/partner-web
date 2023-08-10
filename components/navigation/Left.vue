@@ -20,9 +20,21 @@
       </NavigationTab>
       <NavigationTab>
         <template #icon>
-          <HashtagIcon />
+          <MagnifyingGlassIcon />
         </template>
         <template #text> Explore </template>
+      </NavigationTab>
+      <NavigationTab>
+        <template #icon>
+          <ChatBubbleLeftRightIcon />
+        </template>
+        <template #text> Messages </template>
+      </NavigationTab>
+      <NavigationTab>
+        <template #icon>
+          <MapPinIcon />
+        </template>
+        <template #text> Map </template>
       </NavigationTab>
       <NavigationTab>
         <template #icon>
@@ -32,15 +44,9 @@
       </NavigationTab>
       <NavigationTab>
         <template #icon>
-          <InboxIcon />
+          <Cog6ToothIcon />
         </template>
-        <template #text> Messages </template>
-      </NavigationTab>
-      <NavigationTab>
-        <template #icon>
-          <BookmarkIcon />
-        </template>
-        <template #text> Map </template>
+        <template #text> Settings </template>
       </NavigationTab>
     </div>
   </div>
@@ -49,12 +55,11 @@
 <script setup lang="ts">
 import {
   HomeIcon,
-  HashtagIcon,
+  ChatBubbleLeftRightIcon,
   BellIcon,
-  InboxIcon,
-  BookmarkIcon,
-  DocumentTextIcon,
-  UserIcon,
+  MapPinIcon,
+  MagnifyingGlassIcon,
+  Cog6ToothIcon,
 } from "@heroicons/vue/24/outline";
 
 const { defaultTransition } = useTailwindConfig();
