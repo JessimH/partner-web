@@ -19,5 +19,5 @@
 </template>
 
 <script setup lang="ts">
-const darkMode = ref(false);
+const darkMode = ref(true);
 </script>
