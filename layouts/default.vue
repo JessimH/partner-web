@@ -2,7 +2,7 @@
   <div :class="{ dark: darkMode }">
     <div class="bg-white dark:bg-dim-900 min-h-full">
       <div
-        class="grid grid-cols-12 gap-2 mx-auto xs:px-2 sm:px-6 lg:max-w-7xl lg:px-8 lg:gap-5"
+        class="grid grid-cols-12 xs:px-2 sm:px-6 lg:max-w-7xl lg:px-8 lg:gap-5"
       >
         <!-- LEFT SIDE BAR -->
 
