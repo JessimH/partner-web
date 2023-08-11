@@ -32,6 +32,24 @@ pnpm run dev
 yarn dev
 ```
 
+## Create Db with Prisma models
+
+First add your MongoDb link in .env file
+
+```bash
+# npx
+npx prisma db push
+```
+
+## Run Prisma Documentation
+
+Start the development server on `http://localhost:5858`:
+
+```bash
+# npx
+npx prisma-docs-generator serve
+```
+
 ## Production
 
 Build the application for production:
