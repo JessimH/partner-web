@@ -3,6 +3,13 @@
 // module.exports = {
 //   content: [],
 //   theme: {
+//     screens: {
+//       xs: "614px",
+//       sm: "1002px",
+//       md: "1022px",
+//       lg: "1092px",
+//       xl: "1280px",
+//     },
 //     colors: {
 //       'primary': {
 //         '50': '#eafff7',
@@ -47,7 +54,7 @@
 //     extend: {},
 //   },
 //   plugins: [
-
+//     require('@tailwindcss/forms'),
 //   ],
 // }
 
