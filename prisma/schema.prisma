@@ -3,37 +3,121 @@
 
 generator client {
   provider = "prisma-client-js"
-  previewFeatures = ["referentialIntegrity"]
 }
 
+generator docs {
+  provider = "node node_modules/prisma-docs-generator"
+}
 
 datasource db {
-  provider = "mongodb"
-  url      = env("DATABASE_URL")
+  provider     = "mongodb"
+  url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
 
-model User{
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  name String?
-  username String @unique
-  email String @unique
-  password String
+enum Role {
+  USER
+  ADMIN
+}
+
+model User {
+  id           String  @id @default(auto()) @map("_id") @db.ObjectId
+  role         Role    @default(USER)
+  name         String?
+  username     String  @unique
+  email        String  @unique
+  password     String
   profileImage String?
+
+  // SPORTS
+  sportTypesIDs String[]    @db.ObjectId
+  sports        SportType[] @relation(fields: [sportTypesIDs], references: [id])
+
+  // SESSIONS AS PARTICIPANT
+  sessionsIDs String[]  @db.ObjectId
+  sessions    Session[] @relation("asParticipants", fields: [sessionsIDs], references: [id])
+
+  // SESSIONS AS AUTHOR
+  sessionsAsAuthorIDs String[]  @db.ObjectId
+  sessionsAsAuthor    Session[] @relation("asAuthor")
+
+  // Replies
+  commentsIDs String[]  @db.ObjectId
+  comments    Comment[] @relation("commentUser")
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
- 
+
   refreshToken RefreshToken[]
 }
 
-model RefreshToken{
-  id String @id @default(auto()) @map("_id") @db.ObjectId
+model RefreshToken {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
   token String @unique
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   userId String @db.ObjectId
-  user User @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id])
+}
+
+model SportType {
+  id   String @id @default(auto()) @map("_id") @db.ObjectId
+  name String @unique
+
+  // SESSIONS WITH THIS SPORT
+  sessionsIDs String[]  @db.ObjectId
+  sessions    Session[]
+
+  // USERS WITH THIS SPORT
+  userIDs String[] @db.ObjectId
+  users   User[]   @relation(fields: [userIDs], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Session {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String
+  date        DateTime
+  location    String
+
+  // SportType
+  sportTypeId String    @db.ObjectId
+  sportType   SportType @relation(fields: [sportTypeId], references: [id])
+
+  // Participants
+  maxParticipants Int      @default(0)
+  participantsIDs String[] @db.ObjectId
+  participants    User[]   @relation("asParticipants", fields: [participantsIDs], references: [id])
+
+  // Author
+  authorId String @db.ObjectId
+  author   User   @relation("asAuthor", fields: [authorId], references: [id])
+
+  // Comments
+  commentsID String[]  @db.ObjectId
+  comments   Comment[] @relation("commentsSession")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Comment {
+  id   String @id @default(auto()) @map("_id") @db.ObjectId
+  text String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Session
+  sessionId String  @db.ObjectId
+  session   Session? @relation("commentsSession", fields: [sessionId], references: [id])
+
+  // Author
+  authorId String @db.ObjectId
+  author   User   @relation("commentUser", fields: [authorId], references: [id])
 }
