@@ -1,6 +1,7 @@
 # Project Setup
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more about the frontend part.
+
 Look at the [Prisma and MongoDB documentation](https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/mongodb-typescript-mongodb) to learn more about the backend part.
 
 ## Setup
