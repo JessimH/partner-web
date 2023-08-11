@@ -20,10 +20,11 @@ export const getUserByUsername = (username: string) => {
   });
 };
 
-export const getUserById = (id: string) => {
+export const getUserById = (userId: string) => {
+  console.log("userId", userId);
   return prisma.user.findUnique({
     where: {
-      id,
+      id: userId,
     },
   });
 };

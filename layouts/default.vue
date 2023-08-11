@@ -1,7 +1,8 @@
 <template>
   <div :class="{ dark: darkMode }">
     <div class="bg-white dark:bg-black min-h-full">
-      <div v-if="user">
+      <LoadingPage v-if="isAuthLoading" />
+      <div v-else-if="user">
         <div class="grid grid-cols-12 xs:px-2 sm:px-6 lg:px-8 lg:gap-5">
           <!-- LEFT SIDE BAR -->
           <div class="xs-col-span-1 xl:col-span-2">
@@ -22,7 +23,8 @@
 
 <script setup lang="ts">
 const darkMode = ref(false);
-const { useAuthUser, initAuth } = useAuth();
+const { useAuthUser, initAuth, useAuthLoading } = useAuth();
+const isAuthLoading = useAuthLoading();
 const user = useAuthUser();
 
 onBeforeMount(() => {
