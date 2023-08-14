@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "training-mates-webapp",
   "private": true,
   "scripts": {
     "build": "nuxt build",
@@ -7,6 +7,9 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
   },
   "devDependencies": {
     "@heroicons/vue": "^2.0.18",

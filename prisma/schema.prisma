@@ -87,7 +87,7 @@ model Session {
 
   // SportType
   sportTypeId String    @db.ObjectId
-  sportType   SportType @relation(fields: [sportTypeId], references: [id])
+  sportType   SportType @relation(fields: [sportTypeId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   // Participants
   maxParticipants Int      @default(0)
@@ -96,7 +96,7 @@ model Session {
 
   // Author
   authorId String @db.ObjectId
-  author   User   @relation("asAuthor", fields: [authorId], references: [id])
+  author   User   @relation("asAuthor", fields: [authorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   // Comments
   commentsID String[]  @db.ObjectId
@@ -115,9 +115,9 @@ model Comment {
 
   // Session
   sessionId String  @db.ObjectId
-  session   Session? @relation("commentsSession", fields: [sessionId], references: [id])
+  session   Session? @relation("commentsSession", fields: [sessionId], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
   // Author
   authorId String @db.ObjectId
-  author   User   @relation("commentUser", fields: [authorId], references: [id])
+  author   User   @relation("commentUser", fields: [authorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }

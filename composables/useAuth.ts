@@ -4,6 +4,7 @@ import jwt_decode from "jwt-decode";
 export default () => {
   const useAuthToken = () => useState("auth_token");
   const useAuthUser = () => useState("auth_user");
+  const useAuthRole = () => useState("auth_role");
   const useAuthLoading = () => useState("auth_loading", () => true);
 
   const setToken = (newToken: string) => {
@@ -19,6 +20,11 @@ export default () => {
   const setIsAuthLoading = (loading: boolean) => {
     const authLoading = useAuthLoading();
     authLoading.value = loading;
+  };
+
+  const setRole = (role: string) => {
+    const authRole = useAuthRole();
+    authRole.value = role;
   };
 
   const login = ({
@@ -40,6 +46,7 @@ export default () => {
 
         setToken(data.access_token);
         setUser(data.user);
+        setRole(data.user.role);
 
         resolve(true);
       } catch (e) {
@@ -112,6 +119,7 @@ export default () => {
   return {
     login,
     useAuthUser,
+    useAuthRole,
     initAuth,
     useAuthLoading,
     useAuthToken,
